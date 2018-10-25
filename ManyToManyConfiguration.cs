@@ -27,5 +27,21 @@ public class UserConfiguration : EntityTypeConfiguration<User>
         }
     }
     
+
+public class Application : BaseEntity
+    {
+        public virtual ICollection<User> ApplicationUsers { get; set; }
+
+        public virtual string Name { get; set; }
+
+    }
+    
+public class User : BaseEntity
+    {
+        public virtual ICollection<Application> UserApplications { get; set; }
+
+        public virtual string FirstName { get; set; }
+        public virtual string LastName { get; set; }
+  }
     
     
