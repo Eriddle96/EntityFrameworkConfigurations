@@ -1,1 +1,1 @@
-# EntityFrameworkConfiguration
+# Entity Framework Configurations
