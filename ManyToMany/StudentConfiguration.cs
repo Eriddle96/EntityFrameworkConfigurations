@@ -1,16 +1,16 @@
-
+using System.Data.Entity.ModelConfiguration;
 
 public class StudentConfiguration : EntityTypeConfiguration<Student>
+{
+    public StudentConfiguration()
     {
-        public StudentConfiguration()
+        ToTable("Student");
+        HasKey(s => s.Id);
+        HasMany(c => c.Courses).WithMany(s => s.Students).Map(sc =>
         {
-            ToTable("Student");
-            HasKey(c => c.Id);
-            HasMany(c => c.Courses).WithMany(c => c.Students).Map(cs =>
-            {
-                cs.MapLeftKey("StudentId");
-                cs.MapRightKey("CourseId");
-                cs.ToTable("StudentCourses");
-            });
-        }
+            sc.MapLeftKey("StudentId");
+            sc.MapRightKey("CourseId");
+            sc.ToTable("StudentCourses");
+        });
     }
+}
